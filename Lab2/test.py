@@ -1,14 +1,25 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Независимая (x) и зависимая (y) переменные
+# Линейная зависимость
 x = np.linspace(0, 10, 50)
-y = x
-# Построение графика
-plt.title('Линейная зависимость y = x') # заголовок
-plt.xlabel('x') # ось абсцисс
-plt.ylabel('y') # ось ординат
-plt.grid() # включение отображение сетки
-plt.plot(x, y, 'r--') # построение графика
+y1 = x
+# Квадратичная зависимость
+y2 = x**2
+
+# Построение графиков
+plt.figure(figsize=(9, 9)) # размер общего поля
+
+plt.subplot(2, 1, 1) # местоположение поля с графиком
+plt.plot(x, y1) # построение графика
+plt.title('Зависимости: y1 = x, y2 = x^2') # заголовок
+plt.ylabel('y1', fontsize=14) # ось ординат
+plt.grid(True) # включение отображение сетки
+
+plt.subplot(2, 1, 2)
+plt.plot(x, y2) # построение графика
+plt.xlabel('x', fontsize=14) # ось абсцисс
+plt.ylabel('y2', fontsize=14) # ось ординат
+plt.grid(True) # включение отображение сетки
 
 plt.show()
