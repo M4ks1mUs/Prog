@@ -1,4 +1,5 @@
 # Отчёт
+## Урок 1
 ```python
 import matplotlib.pyplot as plt
 plt.plot([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
@@ -129,3 +130,174 @@ ax.tick_params(which='minor', length=5, width=1)
 plt.show()
 ```
 ![alt text](images/image7.png)
+## Урок 2
+```python
+import matplotlib.pyplot as plt
+plt.plot()
+plt.show()
+```
+![alt text](images/image8.png)
+```python
+import matplotlib.pyplot as plt
+plt.plot([1, 7, 3, 5, 11, 1])
+plt.show()
+```
+![alt text](images/image9.png)
+```python
+import matplotlib.pyplot as plt
+plt.plot([1, 5, 10, 15, 20], [1, 7, 3, 5, 11])
+plt.show()
+```
+![alt text](images/image10.png)
+```python
+import matplotlib.pyplot as plt
+
+x = [1, 5, 10, 15, 20]
+y = [1, 7, 3, 5, 11]
+plt.plot(x, y, label='steel price')
+plt.title('Chart price', fontsize=15)
+plt.xlabel('Day', fontsize=12, color='blue')
+plt.ylabel('Price', fontsize=12, color='blue')
+plt.legend()
+plt.grid(True)
+plt.text(15, 4, 'grow up!')
+
+plt.show()
+```
+![alt text](images/image11.png)
+```python
+import matplotlib.pyplot as plt
+x = [1, 5, 10, 15, 20]
+y = [1, 7, 3, 5, 11]
+plt.plot(x, y, '--')
+plt.show()
+```
+```python
+import matplotlib.pyplot as plt
+x = [1, 5, 10, 15, 20]
+y = [1, 7, 3, 5, 11]
+line = plt.plot(x, y)
+plt.setp(line, linestyle='--')
+plt.show()
+```
+![alt text](images/image12.png)
+```python
+import matplotlib.pyplot as plt
+
+x = [1, 5, 10, 15, 20]
+y1 = [1, 7, 3, 5, 11]
+y2 = [i*1.2 + 1 for i in y1]
+y3 = [i*1.2 + 1 for i in y2]
+y4 = [i*1.2 + 1 for i in y3]
+plt.plot(x, y1, '-', x, y2, '--', x, y3, '-.', x, y4, ':')
+
+plt.show()
+```
+```python
+import matplotlib.pyplot as plt
+
+x = [1, 5, 10, 15, 20]
+y1 = [1, 7, 3, 5, 11]
+y2 = [i*1.2 + 1 for i in y1]
+y3 = [i*1.2 + 1 for i in y2]
+y4 = [i*1.2 + 1 for i in y3]
+plt.plot(x, y1, '-')
+plt.plot(x, y2, '--')
+plt.plot(x, y3, '-.')
+plt.plot(x, y4, ':')
+
+plt.show()
+```
+![alt text](images/image13.png)
+```python
+import matplotlib.pyplot as plt
+
+x = [1, 5, 10, 15, 20]
+y = [1, 7, 3, 5, 11]
+plt.plot(x, y, '--r')
+
+plt.show()
+```
+![alt text](images/image14.png)
+```python
+import matplotlib.pyplot as plt
+x = [1, 5, 10, 15, 20]
+y = [1, 7, 3, 5, 11]
+plt.plot(x, y, 'ro')
+plt.show()
+```
+![alt text](images/image15.png)
+```python
+import matplotlib.pyplot as plt
+x = [1, 5, 10, 15, 20]
+y = [1, 7, 3, 5, 11]
+plt.plot(x, y, 'bx')
+plt.show()
+```
+![alt text](images/image16.png)
+```python
+import matplotlib.pyplot as plt
+
+# Исходный набор данных
+x = [1, 5, 10, 15, 20]
+y1 = [1, 7, 3, 5, 11]
+y2 = [i*1.2 + 1 for i in y1]
+y3 = [i*1.2 + 1 for i in y2]
+y4 = [i*1.2 + 1 for i in y3]
+# Настройка размеров подложки
+plt.figure(figsize=(12, 7))
+# Вывод графиков
+plt.subplot(2, 2, 1)
+plt.plot(x, y1, '-')
+plt.subplot(2, 2, 2)
+plt.plot(x, y2, '--')
+plt.subplot(2, 2, 3)
+plt.plot(x, y3, '-.')
+plt.subplot(2, 2, 4)
+plt.plot(x, y4, ':')
+
+plt.show()
+```
+```python
+import matplotlib.pyplot as plt
+
+# Исходный набор данных
+x = [1, 5, 10, 15, 20]
+y1 = [1, 7, 3, 5, 11]
+y2 = [i*1.2 + 1 for i in y1]
+y3 = [i*1.2 + 1 for i in y2]
+y4 = [i*1.2 + 1 for i in y3]
+# Настройка размеров подложки
+plt.figure(figsize=(12, 7))
+# Вывод графиков
+plt.subplot(221)
+plt.plot(x, y1, '-')
+plt.subplot(222)
+plt.plot(x, y2, '--')
+plt.subplot(223)
+plt.plot(x, y3, '-.')
+plt.subplot(224)
+plt.plot(x, y4, ':')
+
+plt.show()
+```
+```python
+import matplotlib.pyplot as plt
+
+# Исходный набор данных
+x = [1, 5, 10, 15, 20]
+y1 = [1, 7, 3, 5, 11]
+y2 = [i*1.2 + 1 for i in y1]
+y3 = [i*1.2 + 1 for i in y2]
+y4 = [i*1.2 + 1 for i in y3]
+# Вывод графиков
+fig, axs = plt.subplots(2, 2, figsize=(12, 7))
+axs[0, 0].plot(x, y1, '-')
+axs[0, 1].plot(x, y2, '--')
+axs[1, 0].plot(x, y3, '-.')
+axs[1, 1].plot(x, y4, ':')
+
+plt.show()
+```
+![alt text](images/image17.png)
+## Урок 3
