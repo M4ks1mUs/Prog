@@ -1,14 +1,14 @@
-from circle import calculate_circle
-from distance import calculate_distances
-from favorite_movies import extract_movies
-from garden import garden_meadow
-from my_family import get_family_info
-from operations import calculate_expression
-from secret import decode_message
-from shopping import create_sweets_dict
-from songs_list import calculate_songs_duration
-from store import calculate_store_inventory
-from zoo import manage_zoo
+from distance_00 import calculate_distances
+from circle_01 import calculate_circle
+from operations_02 import calculate_expression
+from favorite_movies_03 import extract_movies
+from my_family_04 import get_family_info
+from zoo_05 import manage_zoo
+from songs_list_06 import calculate_songs_duration
+from secret_07 import decode_message
+from garden_08 import garden_meadow
+from shopping_09 import create_sweets_dict
+from store_10 import calculate_store_inventory
 
 def main():
     print('Задание 0')

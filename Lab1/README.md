@@ -1,4 +1,5 @@
 # Отчёт
+# Сложность Rare
 ## Задание 0
 Есть словарь координат городов
 ```python
@@ -372,3 +373,321 @@ print('Стул -', chairs_quantity, 'шт, стоимость', chairs_cost, '�
 ```
 Результат:
 ![alt text](images/image10.png)
+# Сложность Medium
+Инкапсулируем логику модулей-заданий для корректного импортирования. Слегка перепишем код решения каждого задания. Добавим возможность передавать в качестве аргумента различные значения в те функции, где это будет уместно.
+## Задание 0
+```python
+def calculate_distances(sites):
+    keys = list(sites.keys())
+
+    # расстояние на координатной сетке - ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+
+    distances = {
+        f'{keys[0]}-{keys[1]}':(((sites[keys[0]][0] - sites[keys[1]][0]) ** 2 + (sites[keys[0]][1] - sites[keys[1]][1]) ** 2) ** 0.5),
+        f'{keys[0]}-{keys[2]}' :(((sites[keys[0]][0] - sites[keys[2]][0]) ** 2 + (sites[keys[0]][1] - sites[keys[2]][1]) ** 2) ** 0.5),
+        f'{keys[1]}-{keys[2]}' :(((sites[keys[1]][0] - sites[keys[2]][0]) ** 2 + (sites[keys[1]][1] - sites[keys[2]][1]) ** 2) ** 0.5)
+    }
+
+    return distances
+```
+## Задание 1
+```python
+def calculate_circle(radius, point_1, point_2):
+    circle_area = round(3.1415926 * radius**2, 4)
+
+    distance_p1 = (point_1[0]**2 + point_1[1]**2) ** 0.5
+    result_1 = distance_p1 <= radius
+
+    distance_p2 = (point_2[0]**2 + point_2[1]**2) ** 0.5
+    result_2 = distance_p2 <= radius
+
+    return circle_area, result_1, result_2
+```
+## Задание 2
+```python
+def calculate_expression():
+    result = (1 + 2) * 3
+
+    result_25 = 1 * (2 + 3) + 4 * 5
+    return result, result_25
+```
+## Задание 3
+```python
+def extract_movies():
+    my_favorite_movies = 'Терминатор, Пятый элемент, Аватар, Чужие, Назад в будущее'
+
+    first = my_favorite_movies[0:10]
+    last = my_favorite_movies[42:57]
+    second = my_favorite_movies[12:25]
+    second_from_end = my_favorite_movies[27:33]
+    
+    return first, last, second, second_from_end
+```
+## Задание 4
+```python
+def get_family_info():
+    my_family_height = [
+        ['Алексей', 174],
+        ['Лариса', 165],
+        ['Марк', 182],
+        ['Макарий', 186],
+        ['Максим', 184],
+        ['Миша', 178],
+        ['Маша', 164]
+    ]
+
+    father_height = f'Рост отца - {my_family_height[0][1]} см'
+    summ = my_family_height[0][1]+my_family_height[1][1]+my_family_height[2][1]+my_family_height[3][1]+my_family_height[4][1]+my_family_height[5][1]+my_family_height[6][1]
+    total_height = f'Общий рост моей семьи - {summ} см'
+
+    return father_height, total_height
+```
+## Задание 5
+```python
+def manage_zoo():
+    zoo = ['lion', 'kangaroo', 'elephant', 'monkey', ]
+
+    zoo.insert(1, 'bear')
+    zoo_with_bear = zoo.copy()
+
+    birds = ['rooster', 'ostrich', 'lark', ]
+    zoo += birds
+    zoo_with_birds = zoo.copy()
+
+    zoo.remove('elephant')
+    zoo_without_elephant = zoo.copy()
+    
+    lion_position = zoo.index('lion') + 1
+    lark_position = zoo.index('lark') + 1
+    
+    return zoo_with_bear, zoo_with_birds, zoo_without_elephant, lion_position, lark_position
+```
+## Задание 6
+```python
+def calculate_songs_duration():
+    violator_songs_list = [
+        ['World in My Eyes', 4.86],
+        ['Sweetest Perfection', 4.43],
+        ['Personal Jesus', 4.56],
+        ['Halo', 4.9],
+        ['Waiting for the Night', 6.07],
+        ['Enjoy the Silence', 4.20],
+        ['Policy of Truth', 4.76],
+        ['Blue Dress', 4.29],
+        ['Clean', 5.83],
+    ]
+
+    sum1 = violator_songs_list[3][1]+violator_songs_list[5][1]+violator_songs_list[8][1]
+    result1 = f'Три песни звучат {round(sum1, 2)} минут'
+
+    violator_songs_dict = {
+        'World in My Eyes': 4.76,
+        'Sweetest Perfection': 4.43,
+        'Personal Jesus': 4.56,
+        'Halo': 4.30,
+        'Waiting for the Night': 6.07,
+        'Enjoy the Silence': 4.6,
+        'Policy of Truth': 4.88,
+        'Blue Dress': 4.18,
+        'Clean': 5.68,
+    }
+
+    sum2 = violator_songs_dict['Sweetest Perfection']+violator_songs_dict['Policy of Truth']+violator_songs_dict['Blue Dress']
+    result2 = f'А другие три песни звучат {round(sum2, 2)} минут'
+
+    return result1, result2
+```
+## Задание 7
+```python
+def decode_message():
+    secret_message = [
+        'квевтфпп6щ3стмзалтнмаршгб5длгуча',
+        'дьсеы6лц2бане4т64ь4б3ущея6втщл6б',
+        'т3пплвце1н3и2кд4лы12чф1ап3бкычаь',
+        'ьд5фму3ежородт9г686буиимыкучшсал',
+        'бсц59мегщ2лятьаьгенедыв9фк9ехб1а',
+    ]
+
+    word1 = secret_message[0][3]
+    word2 = secret_message[1][9:13]
+    word3 = secret_message[2][5:15:2]
+    word4 = secret_message[3][12:6:-1]
+    word5 = secret_message[4][20:15:-1]
+    decoded = f'{word1} {word2} {word3} {word4} {word5}'
+    
+    return decoded
+```
+## Задание 8
+```python
+def garden_meadow(garden, meadow):
+    garden_set = set(garden)
+    meadow_set = set(meadow)
+
+    all_flowers = garden_set.union(meadow_set)
+
+    garden_and_meadow = garden_set.intersection(meadow_set)
+
+    only_garden = garden_set.difference(meadow_set)
+
+    only_meadow = meadow_set.difference(garden_set)
+
+    return all_flowers, garden_and_meadow, only_garden, only_meadow
+```
+## Задание 9
+```python
+def create_sweets_dict():
+    shops = {
+        'ашан':
+            [
+                {'name': 'печенье', 'price': 10.99},
+                {'name': 'конфеты', 'price': 34.99},
+                {'name': 'карамель', 'price': 45.99},
+                {'name': 'пирожное', 'price': 67.99}
+            ],
+        'пятерочка':
+            [
+                {'name': 'печенье', 'price': 9.99},
+                {'name': 'конфеты', 'price': 32.99},
+                {'name': 'карамель', 'price': 46.99},
+                {'name': 'пирожное', 'price': 59.99}
+            ],
+        'магнит':
+            [
+                {'name': 'печенье', 'price': 11.99},
+                {'name': 'конфеты', 'price': 30.99},
+                {'name': 'карамель', 'price': 41.99},
+                {'name': 'пирожное', 'price': 62.99}
+            ],
+    }
+
+    sweets = {
+        'печенье':
+        [
+            {'shop': 'ашан', 'price': 10.99},
+            {'shop': 'пятерочка', 'price': 9.99}
+        ],
+        'конфеты':
+        [
+            {'shop': 'пятерочка', 'price': 32.99},
+            {'shop': 'магнит', 'price': 30.99}
+        ],
+        'карамель':
+        [
+            {'shop': 'ашан', 'price': 45.99},
+            {'shop': 'магнит', 'price': 41.99}
+        ],
+        'пирожное':
+        [
+            {'shop': 'пятерочка', 'price': 59.99},
+            {'shop': 'магнит', 'price': 62.99}
+        ]
+    }
+    
+    return sweets
+```
+## Задание 10
+```python
+def calculate_store_inventory():
+    goods = {
+        'Лампа': '12345',
+        'Стол': '23456',
+        'Диван': '34567',
+        'Стул': '45678',
+    }
+
+    store = {
+        '12345': [
+            {'quantity': 27, 'price': 42},
+        ],
+        '23456': [
+            {'quantity': 22, 'price': 510},
+            {'quantity': 32, 'price': 520},
+        ],
+        '34567': [
+            {'quantity': 2, 'price': 1200},
+            {'quantity': 1, 'price': 1150},
+        ],
+        '45678': [
+            {'quantity': 50, 'price': 100},
+            {'quantity': 12, 'price': 95},
+            {'quantity': 43, 'price': 97},
+        ],
+    }
+
+    lamp_code = goods['Лампа']
+    lamps_item = store[lamp_code][0]
+    lamps_quantity = lamps_item['quantity']
+    lamps_price = lamps_item['price']
+    lamps_cost = lamps_quantity * lamps_price
+    lamp_result = f'Лампа - {lamps_quantity} шт, стоимость {lamps_cost} руб'
+
+    tables_cost1 = store[goods['Стол']][0]['quantity'] * store[goods['Стол']][0]['price']
+    tables_cost2 = store[goods['Стол']][1]['quantity'] * store[goods['Стол']][1]['price']
+    tables_cost = tables_cost1 + tables_cost2  # Стоимость всех столов на складе
+    tables_quantity = store[goods['Стол']][0]['quantity'] + store[goods['Стол']][1]['quantity']
+    table_result = f'Стол - {tables_quantity} шт, стоимость {tables_cost} руб'
+
+    sofas_cost1 = store[goods['Диван']][0]['quantity'] * store[goods['Диван']][0]['price']
+    sofas_cost2 = store[goods['Диван']][1]['quantity'] * store[goods['Диван']][1]['price']
+    sofas_cost = sofas_cost1 + sofas_cost2  # Стоимость всех диванов на складе
+    sofas_quantity = store[goods['Диван']][0]['quantity'] + store[goods['Диван']][1]['quantity']
+    sofa_result = f'Диван - {sofas_quantity} шт, стоимость {sofas_cost} руб'
+
+    chairs_cost1 = store[goods['Стул']][0]['quantity'] * store[goods['Стул']][0]['price']
+    chairs_cost2 = store[goods['Стул']][1]['quantity'] * store[goods['Стул']][1]['price']
+    chairs_cost3 = store[goods['Стул']][2]['quantity'] * store[goods['Стул']][2]['price']
+    chairs_cost = chairs_cost1 + chairs_cost2 + chairs_cost3   # Стоимость всех стульев на складе
+    chairs_quantity = store[goods['Стул']][0]['quantity'] + store[goods['Стул']][1]['quantity'] + store[goods['Стул']][2]['quantity']
+    chair_result = f'Стул - {chairs_quantity} шт, стоимость {chairs_cost} руб'
+
+    return lamp_result, table_result, sofa_result, chair_result
+```
+В результате каждый модуль будет представлять собой функцию для решения конкретного задания.
+
+Создадим верхнеуровневый модуль main, который будет запускать все модули-задания. Во избежание возникновения ошибок при импортировании модулей, переименуем все модули-задания, переместив номера заданий в конец имён файлов.
+```python
+from distance_00 import calculate_distances
+from circle_01 import calculate_circle
+from operations_02 import calculate_expression
+from favorite_movies_03 import extract_movies
+from my_family_04 import get_family_info
+from zoo_05 import manage_zoo
+from songs_list_06 import calculate_songs_duration
+from secret_07 import decode_message
+from garden_08 import garden_meadow
+from shopping_09 import create_sweets_dict
+from store_10 import calculate_store_inventory
+
+def main():
+    print('Задание 0')
+    print(calculate_distances(sites = {'Moscow': (550, 370),
+                                    'London': (510, 510),
+                                    'Paris': (480, 480),}))
+    print('Задание 1')
+    print(calculate_circle(42, (23, 34), (30, 30)))
+    print('Задание 2')
+    print(calculate_expression())
+    print('Задание 3')
+    print(extract_movies())
+    print('Задание 4')
+    print(get_family_info())
+    print('Задание 5')
+    print(manage_zoo())
+    print('Задание 6')
+    print(calculate_songs_duration())
+    print('Задание 7')
+    print(decode_message())
+    print('Задание 8')
+    print(garden_meadow(('ромашка', 'роза', 'одуванчик', 'ромашка', 'гладиолус', 'подсолнух', 'роза', ), 
+                        ('клевер', 'одуванчик', 'ромашка', 'клевер', 'мак', 'одуванчик', 'ромашка', )))
+    print('Задание 9')
+    print(create_sweets_dict())
+    print('Задание 10')
+    print(calculate_store_inventory())
+
+if __name__ == '__main__':
+    main()
+```
+
+Результатом запуска файла main будет:
+![alt text](images/main.png)
