@@ -58,29 +58,43 @@ print(get_x_rec(12))
 Данный код вывведет
 ![alt text](images/image.png)
 # Сложность Medium
-У нас есть файл task с иходным кодом задания. Создадим файл test_task, в котором будут написаны тесты для нашего кода. С помощью команды pip install pytest установим через терминал библиотеку pytest. Импортируем функции из модуля с заданием в модуль для проведения тестов. Для каждой функции проверим по два верных и два ложных (где это возможно) варианта.
+У нас есть файл task с иходным кодом задания. Создадим файл test_task, в котором будут написаны тесты для нашего кода. С помощью команды pip install pytest установим через терминал библиотеку pytest. Импортируем функции из модуля с заданием в модуль для проведения тестов. Для каждой функции проверим несколько вариантов.
 ```python
 from task import is_palindrom, is_palindrom_rec, get_x, get_x_rec
 
 def test_is_palindrom():
-    assert is_palindrom("12321")
-    assert is_palindrom("stats")
+    assert is_palindrom([])
+    assert is_palindrom([1])
+    assert is_palindrom([1,2,3,2,1])
+    assert is_palindrom('stats')
     assert not is_palindrom([1,2,3,4,5])
     assert not is_palindrom("start")
 
 def test_is_palindrom_rec():
-    assert is_palindrom_rec("12321")
-    assert is_palindrom_rec("stats")
+    assert is_palindrom_rec([])
+    assert is_palindrom_rec([1])
+    assert is_palindrom_rec([1,2,3,2,1])
+    assert is_palindrom_rec('stats')
     assert not is_palindrom_rec([1,2,3,4,5])
     assert not is_palindrom_rec("start")
 
 def test_get_x():
-    assert get_x(12)
-    assert get_x(3)
+    assert get_x(1) == 1
+    assert get_x(2) == 1
+    assert get_x(3) == 1
+    assert get_x(4) == 2
+    assert get_x(5) == 3
+    assert get_x(6) == 4
+    assert get_x(7) == 6
 
 def test_get_x_rec():
-    assert get_x_rec(12)
-    assert get_x_rec(3)
+    assert get_x(1) == 1
+    assert get_x(2) == 1
+    assert get_x(3) == 1
+    assert get_x(4) == 2
+    assert get_x(5) == 3
+    assert get_x(6) == 4
+    assert get_x(7) == 6
 ```
 Результат
 ![alt text](images/test.png)
