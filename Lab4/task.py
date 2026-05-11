@@ -28,8 +28,3 @@ def get_x_rec(i):
     if i <= 3:
         return 1
     return get_x_rec(i-1) + get_x_rec(i-3)
-
-print(is_palindrom([1,2,3,2,1]))
-print(is_palindrom_rec([1,2,3,2]))
-print(get_x(3))
-print(get_x_rec(12))
