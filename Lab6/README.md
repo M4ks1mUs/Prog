@@ -1,6 +1,6 @@
-# Отчёт
-## Вариант 9
+# Отчёт (Вариант 9)
 ## Попискельный генератор для растровых изображений.
+# Сложность Rare
 ```python
 from PIL import Image
 ```
@@ -28,3 +28,42 @@ if not found:
 ```
 Для примера найдём координаты пикселя с цветом (106, 74, 35).
 ![alt text](image.png)
+# Сложность Medium
+У нас есть файл task с иходным кодом задания. Слегка изменим его, обернув всё задание в одну функцию task.
+```python
+from PIL import Image
+
+def task(target_color):
+    def pixel_generator(image_path):
+        with Image.open(image_path) as img:
+            rgb_img = img.convert('RGB')
+            width, height = rgb_img.size
+            for y in range(height):
+                for x in range(width):
+                    yield (x, y), rgb_img.getpixel((x, y))
+    
+    found = False
+    for (x, y), color in pixel_generator('picture.jpg'):
+        if color == target_color:
+            print(f"Цвет {target_color} найден в координатах: x={x}, y={y}")
+            found = True
+            break
+    if not found:
+        print("Такого цвета в изображении нет")
+
+    return found
+```
+Создадим файл test_task, в котором будут написаны тесты для нашего кода.
+```python
+from task import task
+
+def test_task():
+    assert task((106, 74, 35))
+    assert task((17,19,18))
+    assert task((54,35,21))
+    assert not task((170,113,39))
+    assert not task((154,167,167))
+```
+Запустим тест через терминал
+![alt text](test.png)
+Результат: все тесты пройдены успешно.

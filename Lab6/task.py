@@ -8,12 +8,14 @@ def task(target_color):
             for y in range(height):
                 for x in range(width):
                     yield (x, y), rgb_img.getpixel((x, y))
-
+    
     found = False
-    for (x, y), color in pixel_generator('Lab6/picture.jpg'):
+    for (x, y), color in pixel_generator('picture.jpg'):
         if color == target_color:
             print(f"Цвет {target_color} найден в координатах: x={x}, y={y}")
             found = True
             break
     if not found:
         print("Такого цвета в изображении нет")
+
+    return found
