@@ -8,13 +8,14 @@ def pixel_generator(image_path):
             for x in range(width):
                 yield (x, y), rgb_img.getpixel((x, y))
 
-def find_color_in_image(image_path, target_color):
+def find_color_in_image(target_color):
     found = False
-    for (x, y), color in pixel_generator('picture.jpg'):
+    for (x, y), color in pixel_generator('D:/Prog/Lab7/picture.jpg'):
         if color == target_color:
-            print(f"Цвет {target_color} найден в координатах: x={x}, y={y}")
-            found = True
+            found = f"Цвет {target_color}\nнайден в координатах:\nx={x}, y={y}"
+            print(found)
             break
     if not found:
-        print("Такого цвета в изображении нет")
+        found = "Такого цвета в изображении нет"
+        print(found)
     return found

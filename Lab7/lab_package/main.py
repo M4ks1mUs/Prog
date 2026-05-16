@@ -35,9 +35,9 @@ def log_messages(filepath: str, messages: List[str]):
     typer.echo("Основной поток свободен!")
 
 @app.command()
-def find_color(image_path: str, red: int, green: int, blue: int):
+def find_color(red: int, green: int, blue: int):
     from lab_package import find_color_in_image
-    find_color_in_image(image_path, (red, green, blue))
+    find_color_in_image((red, green, blue))
 
 if __name__ == "__main__":
     app()
