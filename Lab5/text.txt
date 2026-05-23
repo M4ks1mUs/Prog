@@ -1,16 +1,6 @@
-[3, 1, 5]
-Hello
-32
-Привет
-[3, 1, 5]
-Hello
-32
-Привет
-[3, 1, 5]
-Hello
-32
-Привет
-[3, 1, 5]
-Hello
-32
-Привет
+120
+Hello, Alice
+Bye, Bob
+Bye, Bob
+Bye, Bob
+120
